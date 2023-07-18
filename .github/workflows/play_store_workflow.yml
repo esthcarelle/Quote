@@ -3,7 +3,7 @@ name: Deploy to Play Store
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -31,8 +31,8 @@ jobs:
           buildToolsVersion: 33.0.0
       - uses: actions/upload-artifact@v3
         with:
-          name: release.aab
-          path:${{steps.sign_app.outputs.signedFile}}
+          name: release.apk
+          path: ${{steps.sign_app.outputs.signedFile}}
       - uses: actions/upload-artifact@v3
         with:
           name: mapping.txt
@@ -52,7 +52,7 @@ jobs:
         uses: r0adkll/upload-google-play@v1.1.1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
-          packageName: com.yourcompany.android.quotes
+          packageName: com.mine.android.quotes
           releaseFiles: app-release-signed.aab
           track: internal
           changesNotSentForReview: true
