@@ -25,7 +25,7 @@ jobs:
         with:
           releaseDir: app/build/outputs/bundle/release
           signingKey: ${{ secrets.SIGNING_KEY }}
-          alias: ${{ secrets.ALIAS }}
+          keyAlias: ${{ secrets.ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
           keyPassword: ${{ secrets.KEY_PASSWORD }}
           buildToolsVersion: 33.0.0
@@ -52,8 +52,8 @@ jobs:
         uses: r0adkll/upload-google-play@v1.1.1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
-          packageName: com.mine.android.quotes
-          releaseFiles: app-release-signed.aab
+          packageName: com.yourcompany.android.quotes
+          releaseFiles: app-release-signed.apk
           track: internal
           changesNotSentForReview: true
           mappingFile: mapping.txt
